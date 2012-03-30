@@ -5,13 +5,13 @@ using System.ComponentModel;
 
 namespace WpfCrutches
 {
-    ///<summary>
+    /// <summary>
     /// Implements an observable collection which maintains its items in sorted order. In particular, changes to item
     /// properties that result in order changes are handled correctly.
-    ///</summary>
+    /// </summary>
     /// <remarks>
-    ///May be buggy due to the comparative complexity of the interface involved and its relatively
-    ///poor documentation (see http://stackoverflow.com/a/5883947/33080).
+    /// May be buggy due to the comparative complexity of the interface involved and its relatively
+    /// poor documentation (see http://stackoverflow.com/a/5883947/33080).
     /// </remarks>
     public class ObservableSortedList<T> : IList<T>,
         INotifyPropertyChanged,
