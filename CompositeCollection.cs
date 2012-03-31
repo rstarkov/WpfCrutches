@@ -108,8 +108,15 @@ namespace WpfCrutches
             return GetEnumerator();
         }
 
-        /// <summary>Throws a "not implemented" exception.</summary>
-        public void CopyTo(T[] array, int arrayIndex) { throw new NotImplementedException(); }
+        /// <summary>Copies this collection to the specified array.</summary>
+        public void CopyTo(T[] array, int arrayIndex)
+        {
+            foreach (var coll in _collections)
+            {
+                coll.CopyTo(array, arrayIndex);
+                arrayIndex += coll.Count;
+            }
+        }
 
         /// <summary>Throws a "not supported" exception.</summary>
         public void Insert(int index, T item) { throw new NotSupportedException(); }
