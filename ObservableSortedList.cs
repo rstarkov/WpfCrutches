@@ -105,23 +105,30 @@ namespace WpfCrutches
             set { throw new InvalidOperationException("Cannot set an item at an arbitrary index in a ObservableSortedList."); }
         }
 
-        /// <summary>Gets the index of the specified item, or -1 if not found.</summary>
+        /// <summary>Gets the index of the specified item, or -1 if not found. Only reference equality matches are considered.</summary>
         /// <remarks>Uses binary search to make the operation more efficient.</remarks>
         public int IndexOf(T item)
         {
             int i = _list.BinarySearch(item, _comparer);
-            if (i < 0)
-                return -1;
-            while (i > 0 && _comparer.Compare(_list[i - 1], item) == 0)
-                i--;
-            return i;
+            if (i < 0) return -1;
+            if (object.ReferenceEquals(_list[i], item)) return i;
+            // Search downwards
+            for (int s = i - 1; s >= 0 && _comparer.Compare(_list[s], item) == 0; s--)
+                if (object.ReferenceEquals(_list[s], item))
+                    return s;
+            // Search upwards
+            for (int s = i + 1; s < _list.Count && _comparer.Compare(_list[s], item) == 0; s++)
+                if (object.ReferenceEquals(_list[s], item))
+                    return s;
+            // Not found
+            return -1;
         }
 
         /// <summary>Returns a value indicating whether the specified item is contained in this collection.</summary>
         /// <remarks>Uses binary search to make the operation more efficient.</remarks>
         public bool Contains(T item)
         {
-            return _list.BinarySearch(item, _comparer) >= 0;
+            return IndexOf(item) >= 0;
         }
 
         /// <summary>Copies all items to the specified array.</summary>
