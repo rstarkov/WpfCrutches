@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompositeCollection.cs" />
+    <Compile Include="AccessKeysScopeBugfix.cs" />
     <Compile Include="LambdaBinding.cs" />
     <Compile Include="ObservableSortedList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
