@@ -88,6 +88,7 @@ namespace WpfCrutches
         {
             int i = IndexOf(item);
             if (i < 0) return false;
+            item.PropertyChanged -= ItemPropertyChanged;
             _list.RemoveAt(i);
             collectionChanged_Removed(item, i);
             propertyChanged("Count");
@@ -98,6 +99,7 @@ namespace WpfCrutches
         public void RemoveAt(int index)
         {
             var item = _list[index];
+            item.PropertyChanged -= ItemPropertyChanged;
             _list.RemoveAt(index);
             collectionChanged_Removed(item, index);
             propertyChanged("Count");
