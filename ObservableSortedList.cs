@@ -206,7 +206,7 @@ namespace WpfCrutches
                 && (oldIndex == Count - 1 || _comparer.Compare(item, _list[oldIndex + 1]) <= 0))
                 return;
 
-            // Find where it should be inserted 
+            // Find where it should be inserted
             _list.RemoveAt(oldIndex);
             int newIndex = _list.BinarySearch(item, _comparer);
             if (newIndex < 0)
