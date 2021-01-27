@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/rstarkov/WpfCrutches</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Implements a number of things oddly missing from WPF, as well as some helpers for writing WPF apps that are not pure MVVM.</description>
-    <copyright>Copyright 2012-2020 Roman Starkov</copyright>
+    <copyright>Copyright 2012-2021 Roman Starkov</copyright>
     <tags>WPF ObservableSortedList CompositeCollection AccessKeysScopeBugfix LambdaBinding ObservableValue DependencyValue VisualUpwardSearch TreeViewWithItem</tags>
   </metadata>
 </package>
